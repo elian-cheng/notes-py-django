@@ -1,9 +1,20 @@
 from django.urls import path
-from .views import send_content, read_content, read_note, delete_content, update_content
+from .views import (
+    send_content,
+    read_content,
+    read_note,
+    delete_content,
+    update_content,
+    special_page,
+)
 
 urlpatterns = [
     path(
         "",
+        special_page,
+    ),
+    path(
+        "read/",
         read_content,
     ),
     path(

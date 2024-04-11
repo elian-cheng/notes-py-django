@@ -5,6 +5,10 @@ from .models import Note
 # Create your views here.
 
 
+def special_page(request):
+    return render(request, "notes.html")
+
+
 def send_content(request):
     # Retrieving all notes from the database
     new_note = Note(
