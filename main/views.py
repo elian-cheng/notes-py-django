@@ -1,11 +1,26 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Note
+from .forms import NoteForm
+
 
 # Create your views here.
+def index(request):
+    if request.method == "POST":
+        form = NoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    return render(request, "notes.html")
 
 
-def special_page(request):
+def your_view_function(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        print(title, content)
+        return redirect("notes")
+
     return render(request, "notes.html")
 
 

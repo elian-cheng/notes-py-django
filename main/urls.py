@@ -5,14 +5,11 @@ from .views import (
     read_note,
     delete_content,
     update_content,
-    special_page,
+    index,
 )
 
 urlpatterns = [
-    path(
-        "",
-        special_page,
-    ),
+    path("", index, name="notes"),
     path(
         "read/",
         read_content,
